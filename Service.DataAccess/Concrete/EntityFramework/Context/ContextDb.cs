@@ -11,16 +11,9 @@ namespace Service.DataAccess.Concrete.EntityFramework.Context
 {
     public class ContextDb : DbContext
     {
-        private readonly IConfiguration _configuration;
-
-        public ContextDb(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("SqlConnectionString"));
+            optionsBuilder.UseSqlServer("server=localhost,1455;database=TechnicalServiceDb;user=sa;password=Asd159123159123!");
         }
 
         public DbSet<Customer> Customers { get; set; }

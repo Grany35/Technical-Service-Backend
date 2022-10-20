@@ -20,10 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Service.Core\Service.Core.csproj" />
     <ProjectReference Include="..\Service.Entities\Service.Entities.csproj" />
   </ItemGroup>
 
