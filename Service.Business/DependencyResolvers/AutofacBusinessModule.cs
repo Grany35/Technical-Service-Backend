@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Service.Business.Abstract;
+using Service.Business.Concrete;
 using Service.DataAccess.Abstract;
 using Service.DataAccess.Concrete.EntityFramework;
 using System;
@@ -13,6 +15,10 @@ namespace Service.Business.DependencyResolvers
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<PartManager>().As<IPartService>();
+            builder.RegisterType<EfPartDal>().As<IPartDal>();
+
+            builder.RegisterType<CustomerManager>().As<ICustomerDal>();
             builder.RegisterType<EfCustomerDal>().As<ICustomerDal>();
         }
     }
