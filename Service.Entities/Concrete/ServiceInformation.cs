@@ -12,8 +12,8 @@ namespace Service.Entities.Concrete
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public string CustomerDescription { get; set; }
-        public bool Status { get; set; }
-        public string FinalStatement { get; set; }
+        public bool Status { get; set; } = true;
+        public string? FinalStatement { get; set; }
         public List<ReplacedPart> ReplacedParts { get; set; }
     }
 }

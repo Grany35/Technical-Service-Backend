@@ -18,8 +18,11 @@ namespace Service.Business.DependencyResolvers
             builder.RegisterType<PartManager>().As<IPartService>();
             builder.RegisterType<EfPartDal>().As<IPartDal>();
 
-            builder.RegisterType<CustomerManager>().As<ICustomerDal>();
+            builder.RegisterType<CustomerManager>().As<ICustomerService>();
             builder.RegisterType<EfCustomerDal>().As<ICustomerDal>();
+
+            builder.RegisterType<ServiceInformationManager>().As<IServiceInformationService>();
+            builder.RegisterType<EfServiceInformationDal>().As<IServiceInformationDal>();
         }
     }
 }

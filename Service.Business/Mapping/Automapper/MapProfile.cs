@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Service.Entities.Concrete;
+using Service.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace Service.Business.Mapping.Automapper
     {
         public MapProfile()
         {
-
+            CreateMap<ServiceInformation, CreateServiceDto>().ReverseMap();
         }
     }
 }
