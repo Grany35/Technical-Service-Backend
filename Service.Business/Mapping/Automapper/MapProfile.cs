@@ -14,6 +14,8 @@ namespace Service.Business.Mapping.Automapper
         public MapProfile()
         {
             CreateMap<ServiceInformation, CreateServiceDto>().ReverseMap();
+
+            CreateMap<Customer, CustomerCreateDto>().ReverseMap();
         }
     }
 }

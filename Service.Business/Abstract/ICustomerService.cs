@@ -1,4 +1,5 @@
 ﻿using Service.Entities.Concrete;
+using Service.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Service.Business.Abstract
 {
     public interface ICustomerService
     {
-        Task AddCustomerAsync(Customer customer);
+        Task<Customer> AddCustomerAsync(CustomerCreateDto customerCreateDto);
         Task<List<Customer>> GetAllAsync();
     }
 }

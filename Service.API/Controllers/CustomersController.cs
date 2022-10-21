@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Business.Abstract;
 using Service.Entities.Concrete;
+using Service.Entities.Dtos;
 
 namespace Service.API.Controllers
 {
@@ -17,10 +18,10 @@ namespace Service.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCustomer(Customer customer)
+        public async Task<IActionResult> AddCustomer(CustomerCreateDto customerCreateDto)
         {
-            await _customerService.AddCustomerAsync(customer);
-            return NoContent();
+            var result = await _customerService.AddCustomerAsync(customerCreateDto);
+            return Ok(result);
         }
 
         [HttpGet]
