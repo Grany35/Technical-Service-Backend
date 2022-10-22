@@ -21,6 +21,11 @@ namespace Service.DataAccess.Concrete.EntityFramework
             {
                 IQueryable<ServiceInformation> query = context.ServiceInformations.Include(x => x.Customer).Include(y => y.ReplacedParts).AsNoTracking().AsQueryable();
 
+                if (serviceParams.IsActive != null)
+                {
+                    query =  query.Where(x => x.Status == serviceParams.IsActive);
+                }
+
                 return await PagedList<ServiceInformation>.CreateAsync(query, serviceParams.PageNumber, serviceParams.PageSize);
             }
         }

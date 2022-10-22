@@ -8,5 +8,6 @@ namespace Service.Core.Utilities.Params
 {
     public class ServiceInformationParams : PaginationParams
     {
+        public bool? IsActive { get; set; }
     }
 }
