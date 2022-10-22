@@ -10,8 +10,8 @@ namespace Service.Business.Abstract
 {
     public interface IServiceInformationService
     {
-        void AddService(CreateServiceDto createServiceDto);
-        void DeleteService(int serviceId);
+        Task AddService(CreateServiceDto createServiceDto);
+        Task DeleteService(int serviceId);
         Task<List<ServiceInformation>> GetAllAsync();
     }
 }

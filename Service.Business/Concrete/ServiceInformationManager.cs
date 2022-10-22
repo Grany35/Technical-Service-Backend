@@ -22,17 +22,17 @@ namespace Service.Business.Concrete
             _mapper = mapper;
         }
 
-        public void AddService(CreateServiceDto createServiceDto)
+        public async Task AddService(CreateServiceDto createServiceDto)
         {
             ServiceInformation serviceInformation = _mapper.Map<ServiceInformation>(createServiceDto);
 
-            _serviceInformationDal.Add(serviceInformation);
+            await _serviceInformationDal.AddAsync(serviceInformation);
         }
 
-        public void DeleteService(int serviceId)
+        public async Task DeleteService(int serviceId)
         {
-            var serviceInformation = _serviceInformationDal.Get(x => x.Id == serviceId);
-            _serviceInformationDal.Delete(serviceInformation);
+            var serviceInformation = await _serviceInformationDal.GetAsync(x => x.Id == serviceId);
+            await _serviceInformationDal.DeleteAsync(serviceInformation);
         }
 
         public async Task<List<ServiceInformation>> GetAllAsync()

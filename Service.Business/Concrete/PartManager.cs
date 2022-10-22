@@ -18,32 +18,6 @@ namespace Service.Business.Concrete
             _partDal = partDal;
         }
 
-        public void Add(Part part)
-        {
-            _partDal.Add(part);
-        }
-
-        public void Delete(int partId)
-        {
-            var part = _partDal.Get(x => x.Id == partId);
-            _partDal.Delete(part);
-        }
-
-        public async Task<List<Part>> GetAllAsync()
-        {
-            var parts = await _partDal.GetAllAsync();
-            return parts;
-        }
-
-        public async Task<Part> GetByIdAsync(int partId)
-        {
-            var part = await _partDal.GetAsync(x => x.Id == partId);
-            return part;
-        }
-
-        public void Update(Part part)
-        {
-            _partDal.Update(part);
-        }
+        
     }
 }

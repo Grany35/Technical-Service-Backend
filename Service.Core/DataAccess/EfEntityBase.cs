@@ -13,38 +13,26 @@ namespace Service.Core.DataAccess
         where TEntity : class, new()
         where TContext : DbContext, new()
     {
-        public void Add(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
             using (var context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
 
-        public void Delete(TEntity entity)
+        public async Task DeleteAsync(TEntity entity)
         {
             using (var context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
-        {
-            using (var context = new TContext())
-            {
-                var quaryable = context.Set<TEntity>().AsQueryable();
-                if (include != null)
-                {
-                    quaryable = include(quaryable);
-                }
-                return quaryable.FirstOrDefault(filter);
-            }
-        }
 
         public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
         {
@@ -74,13 +62,13 @@ namespace Service.Core.DataAccess
             }
         }
 
-        public void Update(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
             using (var context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Modified;
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
     }

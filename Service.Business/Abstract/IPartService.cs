@@ -9,10 +9,6 @@ namespace Service.Business.Abstract
 {
     public interface IPartService
     {
-        void Add(Part part);
-        void Delete(int partId);
-        void Update(Part part);
-        Task<List<Part>> GetAllAsync();
-        Task<Part> GetByIdAsync(int partId);
+       
     }
 }

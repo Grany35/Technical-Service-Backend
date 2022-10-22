@@ -10,11 +10,10 @@ namespace Service.Core.DataAccess
 {
     public interface IEntityRepository<T> where T : class, new()
     {
-        void Add(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        Task AddAsync(T entity);
+        Task DeleteAsync(T entity);
+        Task UpdateAsync(T entity);
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null);
         Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null);
-        T Get(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null);
     }
 }

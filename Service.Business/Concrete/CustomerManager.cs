@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Service.Business.Abstract;
 using Service.DataAccess.Abstract;
+using Service.DataAccess.Concrete.EntityFramework.Context;
 using Service.Entities.Concrete;
 using Service.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,9 +33,9 @@ namespace Service.Business.Concrete
                 return checkCustomer;
             }
 
-            Customer customer=_mapper.Map<Customer>(customerCreateDto);
+            Customer customer = _mapper.Map<Customer>(customerCreateDto);
 
-            _customerDal.Add(customer);
+           await _customerDal.AddAsync(customer);
 
             return customer;
         }
@@ -42,5 +45,6 @@ namespace Service.Business.Concrete
             var customers = await _customerDal.GetAllAsync();
             return customers;
         }
+
     }
 }
