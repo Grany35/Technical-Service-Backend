@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Service.Business.Abstract;
+using Service.Core.Utilities.Pagination;
+using Service.Core.Utilities.Params;
 using Service.DataAccess.Abstract;
 using Service.Entities.Concrete;
 using Service.Entities.Dtos;
@@ -35,10 +38,11 @@ namespace Service.Business.Concrete
             await _serviceInformationDal.DeleteAsync(serviceInformation);
         }
 
-        public async Task<List<ServiceInformation>> GetAllAsync()
+        public async Task<PagedList<ServiceInformation>> GetAllAsync(ServiceInformationParams serviceParams)
         {
-            var serviceInformations = await _serviceInformationDal.GetAllAsync();
-            return serviceInformations;
+            var source=await _serviceInformationDal.GetAllServicesAsync(serviceParams);
+            return source;
+
         }
     }
 }

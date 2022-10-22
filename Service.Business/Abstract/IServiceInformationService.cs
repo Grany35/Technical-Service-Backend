@@ -1,4 +1,6 @@
-﻿using Service.Entities.Concrete;
+﻿using Service.Core.Utilities.Pagination;
+using Service.Core.Utilities.Params;
+using Service.Entities.Concrete;
 using Service.Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,6 @@ namespace Service.Business.Abstract
     {
         Task AddService(CreateServiceDto createServiceDto);
         Task DeleteService(int serviceId);
-        Task<List<ServiceInformation>> GetAllAsync();
+        Task<PagedList<ServiceInformation>> GetAllAsync(ServiceInformationParams serviceParams);
     }
 }

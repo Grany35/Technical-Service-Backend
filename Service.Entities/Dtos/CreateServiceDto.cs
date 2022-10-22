@@ -10,6 +10,5 @@ namespace Service.Entities.Dtos
     {
         public int CustomerId { get; set; }
         public string CustomerDescription { get; set; }
-        public string FinalStatement { get; set; }
     }
 }

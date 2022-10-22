@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Business.Abstract;
+using Service.Core.Utilities.Params;
 using Service.Entities.Concrete;
 using Service.Entities.Dtos;
 
@@ -18,9 +19,9 @@ namespace Service.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery]ServiceInformationParams serviceParams)
         {
-            var result = await _serviceInformationService.GetAllAsync();
+            var result = await _serviceInformationService.GetAllAsync(serviceParams);
             return Ok(result);
         }
 
