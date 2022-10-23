@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Business.Abstract;
+using Service.Core.Extensions;
 using Service.Entities.Concrete;
 using Service.Entities.Dtos;
 
@@ -28,6 +29,7 @@ namespace Service.API.Controllers
         public async Task<IActionResult> GetAllCustomers()
         {
             var result = await _customerService.GetAllAsync();
+
             return Ok(result);
         }
     }

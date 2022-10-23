@@ -41,6 +41,7 @@ namespace Service.Business.Concrete
         public async Task<PagedList<ServiceInformation>> GetAllAsync(ServiceInformationParams serviceParams)
         {
             var source=await _serviceInformationDal.GetAllServicesAsync(serviceParams);
+
             return source;
 
         }

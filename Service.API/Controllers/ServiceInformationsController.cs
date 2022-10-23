@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Business.Abstract;
+using Service.Core.Extensions;
 using Service.Core.Utilities.Params;
 using Service.Entities.Concrete;
 using Service.Entities.Dtos;
@@ -19,9 +20,12 @@ namespace Service.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery]ServiceInformationParams serviceParams)
+        public async Task<IActionResult> GetAll([FromQuery] ServiceInformationParams serviceParams)
         {
             var result = await _serviceInformationService.GetAllAsync(serviceParams);
+
+            Response.AddPaginationHeader(result.CurrentPage, result.PageSize, result.TotalCount, result.TotalPages);
+
             return Ok(result);
         }
 
