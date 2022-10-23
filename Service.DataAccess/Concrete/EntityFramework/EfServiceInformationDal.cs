@@ -26,9 +26,16 @@ namespace Service.DataAccess.Concrete.EntityFramework
                     query = query.Where(x => x.Status == serviceParams.IsActive);
                 }
 
-                if (serviceParams.CustomerFullName != null)
+                if (serviceParams.Query != null)
                 {
-                    query = query.Where(x => x.Customer.FullName.ToLower().Contains(serviceParams.CustomerFullName.ToLower()));
+                    serviceParams.Query = serviceParams.Query.ToLower();
+
+                    query = query.Where(x =>
+                    x.Customer.FullName.ToLower()
+                    .Contains(serviceParams.Query)
+                    ||
+                    x.Customer.Email.ToLower()
+                    .Contains(serviceParams.Query));
                 }
 
                 return await PagedList<ServiceInformation>.CreateAsync(query, serviceParams.PageNumber, serviceParams.PageSize);

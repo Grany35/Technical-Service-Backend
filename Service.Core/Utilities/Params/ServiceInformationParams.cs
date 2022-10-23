@@ -9,6 +9,6 @@ namespace Service.Core.Utilities.Params
     public class ServiceInformationParams : PaginationParams
     {
         public bool? IsActive { get; set; }
-        public string? CustomerFullName { get; set; }
+        public string? Query { get; set; }
     }
 }
