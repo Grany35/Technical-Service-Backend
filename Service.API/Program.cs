@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Service.Business.DependencyResolvers;
 using Service.Business.Mapping.Automapper;
+using Service.Core.Extensions.ExceptionHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors("POLICY");
 

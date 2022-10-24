@@ -30,16 +30,16 @@ namespace Service.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateService(CreateServiceDto createServiceDto)
+        public async Task<IActionResult> CreateService(CreateServiceDto createServiceDto)
         {
-            _serviceInformationService.AddService(createServiceDto);
+            await _serviceInformationService.AddService(createServiceDto);
             return NoContent();
         }
 
         [HttpDelete("{serviceId}")]
-        public IActionResult DeleteService(int serviceId)
+        public async Task<IActionResult> DeleteService(int serviceId)
         {
-            _serviceInformationService.DeleteService(serviceId);
+            await _serviceInformationService.DeleteService(serviceId);
             return NoContent();
 
         }

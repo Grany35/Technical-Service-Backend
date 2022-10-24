@@ -35,12 +35,18 @@ namespace Service.Business.Concrete
         public async Task DeleteService(int serviceId)
         {
             var serviceInformation = await _serviceInformationDal.GetAsync(x => x.Id == serviceId);
+
+            if (serviceInformation == null)
+            {
+                throw new Exception("Böyle bir servis kaydı yok!");
+            }
+
             await _serviceInformationDal.DeleteAsync(serviceInformation);
         }
 
         public async Task<PagedList<ServiceInformation>> GetAllAsync(ServiceInformationParams serviceParams)
         {
-            var source=await _serviceInformationDal.GetAllServicesAsync(serviceParams);
+            var source = await _serviceInformationDal.GetAllServicesAsync(serviceParams);
 
             return source;
 
